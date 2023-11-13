@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <path data-name="Rectangle 4757" style="fill:none" d="M0 0h20v20H0z"/>
+    <g data-name="Union 25">
+        <path d="M1559.5-4343.5a.463.463 0 0 1-.464-.463v-7.073h-7.073a.464.464 0 0 1 0-.927h7.073v-7.074a.463.463 0 0 1 .927 0v7.074h7.073a.463.463 0 0 1 0 .927h-7.073v7.073a.464.464 0 0 1-.464.463z" style="stroke:none" transform="translate(-1549.499 4361.5)"/>
+        <path d="M1559.5-4343a.963.963 0 0 1-.964-.963v-6.573h-6.573a.964.964 0 0 1 0-1.927h6.573v-6.574a.963.963 0 0 1 1.927 0v6.574h6.573a.963.963 0 1 1 0 1.927h-6.573v6.573a.963.963 0 0 1-.964.963z" style="fill:#000;stroke:none" transform="translate(-1549.499 4361.5)"/>
+    </g>
+</svg>

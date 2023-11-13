@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <g transform="translate(-210 -235)">
+        <circle data-name="Ellipse 80" cx="10" cy="10" r="10" transform="translate(210 235)" style="fill:#009801"/>
+        <g data-name="Group 389">
+            <path d="M10.851 2.3a.518.518 0 0 0-.73.072L4.273 9.559 1.94 6.824a.524.524 0 0 0-.8.674l2.746 3.208.033.028c.033.028 0 .028.033.039a.217.217 0 0 0 .078.045l.056.033a.557.557 0 0 0 .195.039.524.524 0 0 0 .2-.045l.056-.033a.607.607 0 0 0 .084-.045v-.039a.035.035 0 0 0 .033-.028l6.271-7.675a.512.512 0 0 0-.078-.73z" transform="translate(213.953 238.822)" style="fill:#fff"/>
+            <path data-name="Rectangle 1772" transform="translate(215 240)" style="fill:none" d="M0 0h10v10H0z"/>
+        </g>
+    </g>
+</svg>

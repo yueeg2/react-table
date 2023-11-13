@@ -1,0 +1,154 @@
+@import "css/reset.css";
+
+*, :after, :before {
+  box-sizing: revert!important;
+}
+.App {
+  min-height: 100vh;
+  background-color: #282c34;
+  text-align: center;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.App-logo {
+  height: 7vmin;
+  pointer-events: none;
+}
+
+p {
+  font-size: 18px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  min-height: 5vh;
+  background-color: #282c34;
+  padding-block: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-body {
+  min-height: 85vh;
+  background-color: #282c34;
+  font-size: calc(10px + 2vmin);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+:root {
+  --hover-brightness: 1.1;
+  --white: #f0f0f0;
+  --engineRed: #c82e2e;
+  --steelBlue: #4c7e9f;
+  --whiteBlue: #eff3f5;
+  --lightBlue: rgba(25, 118, 210, 0.06);
+  --davysGray: #4a4a4a;
+  --gray70: #707070;
+  --grayA: #aaaaaa;
+  --silver: #cecece;
+
+  --critical: #e02020;
+  --warning: #FF8C00;
+  --normal: #009801;
+  --ok: #009801;
+  
+  /* */
+  --fwL: 600;
+  --fwM: 500;
+  --fwS: 400;
+
+  /* */
+  --fz-m: 16px;
+  --fz-s: 14px;
+}
+span.icon-critical:empty, span.icon-warning:empty {
+  border-radius: 100%;
+  display: inline-block;
+  height: 0.8em;
+  width: 0.8em;
+}
+span.icon-critical:empty {
+  background-color: #c82e2e;
+}
+span.icon-warning:empty {
+  background-color: #ffcf06;
+}
+.react-select-clearIndicator {
+  position: absolute;
+  left: calc(100% - 68px);
+}
+/* .button-container .img img {
+
+  box-sizing: content-box;
+} */
+
+.img {
+  padding: 0 5px;
+}
+
+.hover_img {
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+  display: none;
+}
+
+.button-container:hover .img .hover_img {
+  display: block;
+}
+.button-container:hover {
+  cursor: pointer;
+  transition: none;
+  background-color: var(--blue-pacific) !important;
+  filter: brightness(var(--hover-brightness)) !important;
+}
+
+.DatePicker {
+  min-width: 500px;
+}
+
+.animation {
+  width: 70px;
+  animation: loading 2.5s infinite;
+  margin-bottom: 10px;
+  cursor: default;
+  z-index: 100;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  }
+
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  100% {
+    transform: rotate(1800deg);
+  }
+}

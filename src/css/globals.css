@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  --hover-brightness: 1.1;
+
+  --white: #fafafa;
+
+  /* red */
+  --red-upsdell: #b22929;
+  --red-peri: #c82e2e;
+  --red-geraldine: #ea6969;
+  --light-coral: #e68181;
+  --vanilla-ice: #f0d1d1;
+
+  /* blue */
+  --blue-bCerulean: #2294d2;
+  --blue-prussian: #002d42;
+  --blue-corsican: #18344c;
+  --blue-steel: #4c7e9f;
+  --blue-pacific: #10A4B9;
+  --blue-middleBlue: #6bb9c4;
+  --blue-columbia: #b7cede;
+  --blue-alice: #e0e7ec;
+  --lightBlue: rgba(25, 118, 210, 0.06);
+  --blue-antiFlash: #eff3f5;
+  --blueTheme: #eff3f5;
+
+  /* gray */
+  --gray-davys: #4a4a4a;
+  --gray-dim: #707070;
+  --gray-medium: #aaaaaa;
+  --gray-silver: #cecece;
+  --gray-light: #eeeeee;
+  --silver: #cecece;
+
+  /* */
+  --fwL: 600;
+  --fwM: 500;
+  --fwS: 400;
+
+  /* */
+  --fzL: 18px;
+  --fzM: 16px;
+  --fzS: 14px;
+}
+
+#LicenseContract {
+color: #000;
+z-index: 40;
+border-radius: 10px;
+background-color: #fff;
+position: absolute;
+border: 3px solid #002d42;
+max-width: 600px;
+min-height: 10vh;
+width: auto;
+top: 5%;
+left: 35%;
+padding: 10px 30px;
+
+}
+#LicenseContract > div {
+  border: 0px !important;
+  min-width: 400px;
+  margin: 10px;
+
+  align-items: center;
+  justify-content: center;
+}
+#LicenseContract .pTitle {
+  margin: 0 48px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: var(--fwL);
+}
+#LicenseContract .pMessage#License_terms {
+  height: 360px;
+  overflow: scroll;
+  text-align: start;
+  font-size: var(--fzS);
+  margin: 20px 0;
+  p.bold.title {
+    font-weight: var(--fwL);
+    margin-left: 5px;
+  }
+}
+#LicenseContract .pRule {
+  text-align: start;
+  font-size: 16px !important;
+  color: #a02700;
+  padding: 0 25px;
+  margin: 20px 0;
+
+}
+#LicenseContract button {
+  font-size: 14px;
+  width: 65px;
+  height: 31px;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  box-shadow: 0px 4px 8px rgb(0 0 0 / 10%);
+}
+#LicenseContract .confirm {
+  background-color: #388E3C;
+  color: #fff;
+  margin: 0 5px;
+}
+#LicenseContract .cancel {
+  background-color: #757575;
+  color: #fff;
+  margin: 0 5px;
+}
+#LicenseContract .explanatory {
+  padding: 5px 30px;
+  color: #757575;
+  font-size: var(--fz-s);
+  position: relative;
+  margin: 0 5px;
+  font-weight: var(--fw-m);
+  text-align: start;
+}
+#LicenseContract input {
+  width: 240px;
+  height: 30px;
+  padding: 0 20px;
+  margin: 0 14px 0 0;
+  border-radius: 10px;
+  border: 1px solid #002d42;
+  font-weight: var(--fw-s);
+}
+#LicenseContract .title {
+  font-size: var(--fzL);
+  margin: 25px 5px 10px 5px;
+  height: 24px;
+}
+
+#LicenseContract .bold {
+  font-weight: bold;
+}
+.customDatePickerWidth,
+.customDatePickerWidth .MuiInputBase-root,
+.customDatePickerWidth>div.react-datepicker-wrapper,
+.customDatePickerWidth>div>div.react-datepicker__input-container .customDatePickerWidth>div>div.react-datepicker__input-container input {
+  width: 100%;
+}
+
+.customDatePickerWidth,
+.customDatePickerWidth .MuiInputBase-root,
+.customDatePickerWidth>div.react-datepicker-wrapper,
+.customDatePickerWidth>div>div.react-datepicker__input-container .customDatePickerWidth>div>div.react-datepicker__input-container input {
+  width: 100%;
+}
+
+.react-select-clearIndicator {
+  position: absolute;
+  left: calc(100% - 68px);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: white;
+}
+
+.icon-container {
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.bdr-15 {
+  border-radius: 15;
+}
+
+.filterblur {
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.customDatePickerWrapperWidth .react-datepicker-wrapper {
+  width: 100%;
+}
+
+.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+  top: -10px;
+  left: 10px;
+}
+
+.react-datepicker__year-wrapper {
+  /* Your custom styles here */
+  max-width: 210px !important;
+  /* Add any other styles you want to customize */
+}
+
+.react-datepicker-popper {
+  z-index: 100 !important
+}

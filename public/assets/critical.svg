@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <g transform="translate(-680 -840)">
+        <circle data-name="Ellipse 32" cx="10" cy="10" r="10" transform="translate(680 840)" style="fill:#e02020"/>
+        <path d="m0 0 8.025 8.025" transform="translate(685.991 845.997)" style="fill:#fff"/>
+        <path data-name="Path" d="M0 9.25 9.25 0" transform="translate(685.372 845.365)" style="fill:#fff"/>
+        <path data-name="Path" d="m5.833 5 3.994-3.994a.589.589 0 0 0-.833-.833L5 4.167 1.006.173a.589.589 0 0 0-.833.833L4.167 5 .173 8.994a.594.594 0 0 0 0 .833.589.589 0 0 0 .833 0L5 5.833l3.994 3.994a.589.589 0 0 0 .833-.833z" transform="translate(685 845)" style="fill:#fff"/>
+    </g>
+</svg>
