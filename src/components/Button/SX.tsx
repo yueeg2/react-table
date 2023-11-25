@@ -8,7 +8,10 @@ export const SX = {
             ? `var(--white) !important`
             : 'inherit',
         },
-        transition: 'none',      
+        transition: 'none',
+        backgroundColor: buttonColor
+          ? `${buttonColor} !important`
+          : 'inherit',
       },
       '& span': {
         fontSize: 16,
@@ -22,7 +25,6 @@ export const SX = {
             : 'inherit',
         }
       },
-      width: '100%',
       minWidth: 'fit-content',
       padding: padding ? padding : '0 9px',
       borderRadius: radius ? 20 : 1,

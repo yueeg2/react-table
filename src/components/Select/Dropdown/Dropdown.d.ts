@@ -13,7 +13,6 @@ export interface ReactSelectOptProps {
 export interface ReactSelectProps extends ReactSelect.Props<any> {
   options: OptionsOrGroups<FieldValues, GroupBase<ReactSelectOptProps>>,
   isVisible: boolean
-  checkedList: boolean[],
   style?: any
   minWidth?: number,
 };

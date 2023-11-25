@@ -16,10 +16,11 @@ import { TableHeadTheme } from './TableHeadTheme';
 export default function TableHead(
   { TH, style, selectable, sortable, collapsible }: TableHeadProps
 ) {
+  
   return (
     <ThemeProvider theme={TableHeadTheme(style)}>
       <MuiTableHead>
-        <TableRow id={`THeadRow`}>
+        <TableRow className="table-head">
           {selectable ? <CheckBoxSelectAll {...selectable} /> : null}
           {collapsible ? <TableCell /> : null}
           {TH?.map((cell: HeadCellProps) => <Cell key={cell.id} 

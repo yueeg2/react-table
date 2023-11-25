@@ -31,11 +31,14 @@ export default function TableContainer({
   return <Paper sx={ssx.Paper} className='relative'>
     {searchable || Collapse
       ? <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        {searchable ? MemoSearch : null}
+        {
+          searchable
+            ? MemoSearch
+            : null
+        }
         {
           Collapse
-            ?
-            <CollapseSwitch handleAllCollapse={Collapse} />
+            ? <CollapseSwitch handleAllCollapse={Collapse} />
             : null
         }
       </Box>

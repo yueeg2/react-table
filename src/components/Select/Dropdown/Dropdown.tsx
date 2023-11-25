@@ -12,6 +12,8 @@ interface SelectWithFormProps extends ReactSelectProps {
   field: ControllerRenderProps<FieldValues, SelectName>,
   register?: any,
   setValue?: any,
+  checkedList: boolean[],
+
 }
 
 const removeDuplicateValues = (options?: ReactSelect.OptionsOrGroups<any, ReactSelect.GroupBase<ReactSelectOptProps>>) => {
@@ -55,9 +57,7 @@ const Select = ({ minWidth, style, id, className, defaultValue, options, registe
     setValue && setValue(id, value)
   }, [value])
 
-  return <div
-    className={className}
-    style={{ minWidth: minWidth, ...style }}>
+  return <div className={className} style={{ fontSize: '1rem', minWidth: minWidth, ...style }}>
     <Dropdown id={id}
       {...props}
       options={options}
@@ -83,7 +83,7 @@ export const Dropdown = React.memo(({
   isSearchable
   isMulti={isMulti}
   isDisabled={isDisabled}
- options={removeDuplicateValues(options)}
+  options={removeDuplicateValues(options)}
   filterOption={filterOptions}
   components={{
     ...components,

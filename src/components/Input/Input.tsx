@@ -25,6 +25,7 @@ export default function Input({ defaultValue, ...props }: InputWithFromProps) {
     <FormControl variant="standard">
       <BootstrapInput
         {...props}
+        onClick={(e) => e.stopPropagation()}
         defaultValue={defaultValue}
       />
     </FormControl>

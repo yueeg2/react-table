@@ -44,8 +44,8 @@ const Table = ({
   placeholder,
   isBlue = false,
   bgcolor,
-  inlineStyle,
-  overflow }: StyledTableProps) => {
+  overflow,
+  children }: StyledTableProps) => {
   //const theme = useTheme();
 
   /** paging */
@@ -53,11 +53,7 @@ const Table = ({
 
   /** sorting */
   const [orderBy, order, handleRequestSort] = useSort('');
-  const sortProps = {
-    order: order,
-    orderBy: orderBy,
-    onRequestSort: handleRequestSort
-  }
+
   /** searching */
   const [filterFn, setFilterFn] = React.useState<{ fn: (rows: TRProps[]) => any }>({ fn: (rows: TRProps[]) => rows });
 
@@ -156,12 +152,6 @@ const Table = ({
     handleSelectRowClick,
     selectedRowsId } = useSelects(tbody);
 
-  const selectProps = {
-    oriRowAmount: tbody.length && Object.entries(tbody).length,
-    selectedRowAmount: selectedForRemove.length,
-    onChange: handleSelectAllClick
-  }
-
   /** select side effect */
   React.useEffect(() => {
     if (!onSelect) return;
@@ -191,19 +181,25 @@ const Table = ({
     setSelectedForRemove(() => []);
   }, [tbody.length]);
 
-  //console.log(selectedForRemove)
 
   const isRowsIncludeSelected = (v: TRProps) => selectedForRemove.includes(v?.cells[0].rowID.toString());
 
   const TableInstance = () => <MuiTable stickyHeader>
-    <TableHead
+    <TableHead TH={thead}
       style={styles?.th || { fontWeight: 'bold' }}
-      TH={thead}
       sortable={sortable
-        ? sortProps
+        ? {
+          order: order,
+          orderBy: orderBy,
+          onRequestSort: handleRequestSort
+        }
         : undefined}
       selectable={selectable
-        ? selectProps
+        ? {
+          oriRowAmount: tbody.length && Object.entries(tbody).length,
+          selectedRowAmount: selectedForRemove.length,
+          onChange: handleSelectAllClick
+        }
         : undefined}
       collapsible={collapsible
         ? collapsible
@@ -244,20 +240,16 @@ const Table = ({
     </TableBody>
   </MuiTable>;
 
-
-  return <div
-    style={{ ...bg_template(isBlue), ...inlineStyle }}
-    className='relative'>
+  return <div className="react-table relative" style={{ ...bg_template(isBlue) }}>
     <TableContainer isBlue={isBlue}
       searchable={searchable ? handleSearch : false}
       Collapse={collapsible ? handleSwitchChange : false}
     >
       <>
+        {children ? children : null}
         {
           (selectable && selectedForRemove.length)
-            ? <Box
-              style={{ top: 0, left: 300 }}
-              className='flex absolute px-2 mb-[8px] gap-2'>
+            ? <Box className="flex relative md:absolute pr-2 py-1 gap-0 gap-1 md:px-2 md:py-0 top-0 md:left-[300px]">
               {selectActions
                 ? selectActions?.map(({ status, action, ActionElement, statusIndex }: any) => {
                   const StatusSet = new Set(visibleRows.map((v, i) => v[0]?.cells && isRowsIncludeSelected(v[0]) && v[0]?.cells[statusIndex].label.props?.status))
@@ -266,7 +258,7 @@ const Table = ({
                   if ((StatusSet.has('warning') && status === 'warning')
                     || (StatusSet.has('critical') && status === 'critical')
                   ) {
-                    return <ActionElement onClick={action(rowSet, [selectedForRemove, setSelectedForRemove])} />
+                    return <ActionElement onClick={action(rowSet, [selectedForRemove, setSelectedForRemove], status)} />
                   }
 
                 })

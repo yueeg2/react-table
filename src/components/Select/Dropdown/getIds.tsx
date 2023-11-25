@@ -12,14 +12,14 @@ export function getIds(Set: any, selected: any) {
     return res;
 }
 
-export const disabledRow = (resData: TRProps[], curSelected: readonly string[], disableStatus:string): TRProps[] => {
-    //console.log(curSelected)
+export const disabledRow = (resData: TRProps[], curSelected: readonly string[], disableStr: string): TRProps[] => {
     const replacedResData: TRProps[] = Object.values(resData).map((TR: TRProps, i) => {
         const key = Object.keys(TR)[0];
-        const rowId = Object.values(TR)[0][0].rowID;
-        const status = Object.values(TR)[0][0].label.props.status;
-        const Index = curSelected.find(v => v === rowId.toString() && disableStatus === status )
-        //console.log(status, rowId, Index)
+        const TRProp: TRProps = Object.values(TR)[0];
+        const { rowID, label } = TRProp[1]
+        const searchStr = label.props?.status || label;
+        const Index = curSelected.find(v => v === rowID.toString() && (disableStr === searchStr))
+        //console.log(disableStr, label, rowID, Index)
         const newKey = Index ? 'disabled' : key
         return { [newKey]: resData[i][key] };
     });

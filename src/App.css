@@ -121,7 +121,6 @@ span.icon-warning:empty {
 .button-container:hover {
   cursor: pointer;
   transition: none;
-  background-color: var(--blue-pacific) !important;
   filter: brightness(var(--hover-brightness)) !important;
 }
 

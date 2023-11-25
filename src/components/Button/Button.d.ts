@@ -16,7 +16,7 @@ type ArchiveIcon = 'backup-auto' | 'backup-list' | 'backup-manual' | 'backup-sta
 type SelfmoinitorIcon = 'Pen' | 'Plus' | 'Restart' | 'Copy' | 'Cross' | 'Email' | 'Run-Script' | 'Script' | 'Trashcan';
 type SystemSettingIcon = 'system-setting' | 'timezone' | 'connect-setting';
 type DataQueueIcon = 'daily-setting' | 'topiclist';
-type DefaultIcon =  'Trashcan'
+type DefaultIcon =  'Trashcan' | 'Disable'
 export type IconName = undefined | IconSelected | ArchiveIcon | SelfmoinitorIcon | DataQueueIcon | DefaultIcon | SystemSettingIcon
 
 export interface ButtonProps extends MuiButtonProps {

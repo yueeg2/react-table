@@ -8,7 +8,7 @@ import { type ChipProps } from "./ChipProps";
 export default function Chip({ status, iconOnly, text }: ChipProps) {
   const PublicUrl = process.env.DEV || ''
   return (
-    <Stack direction="row" spacing={1} sx={iconOnly ? { display: 'flex', justifyContent: 'center' } : {}}>
+    <Stack direction="row" spacing={1} sx={{ display: 'flex', justifyContent: 'center' }}>
       <div style={iconOnly ? {} : Style.container(status)}>
         {iconOnly
           ? <Tooltip placement='bottom-start' title={status}>

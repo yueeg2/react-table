@@ -34,10 +34,10 @@ const useSelect = (options: OptionsOrGroups<any, GroupBase<ReactSelectOptProps>>
         return;
       }
       // get selected option.
-      const changeIndex = options.findIndex((opt: ReactSelectOptProps) => opt.value === option?.value)
+      const selectedIndex = options.findIndex((opt: ReactSelectOptProps) => opt.value === option?.value)
       // replace checkedList value with the selected option.
-      //console.log(changeIndex)
-      checkedList.splice(changeIndex, 1, !checkedList[changeIndex])
+      //console.log(selectedIndex)
+      checkedList.splice(selectedIndex, 1, !checkedList[selectedIndex])
 
       // ---- onClick OptGroup ----
       if (option?.value.includes('_SELECT_ALL')) {
@@ -57,19 +57,18 @@ const useSelect = (options: OptionsOrGroups<any, GroupBase<ReactSelectOptProps>>
       const { value, label } = newValue as { value: string; label: string } || {}
       // ---- Process the single object ----
       // initialize checkedList as all false.
-      const intialCheckedList = checkedList.map(() => false);
+      const initialCheckedList: boolean[] = Array.from(new Array(checkedList.length), (v) => false);
       // 
       if (actionMeta.action === 'clear') {
-        setCheckedList([...intialCheckedList])
+        setCheckedList([...initialCheckedList])
         return;
       }
       // get selected option.
-      const changeIndex = options.findIndex((opt: ReactSelectOptProps) => opt.value === value)
-      //console.log(changeIndex)
+      const selectedIndex = options.findIndex((opt: ReactSelectOptProps) => opt.value === value)
       // replace checkedList value with the selected option.
-      intialCheckedList.splice(changeIndex, 1, !checkedList[changeIndex])
+      initialCheckedList.splice(selectedIndex, 1, !initialCheckedList[selectedIndex])
       // update. 
-      setCheckedList([...intialCheckedList])
+      setCheckedList([...initialCheckedList])
     }
 
     // const { action, option, removedValue } = actionMeta;
