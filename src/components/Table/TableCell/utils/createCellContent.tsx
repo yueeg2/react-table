@@ -2,7 +2,7 @@ import { strDataParser, arrDataParser } from "./dataParser";
 
 
 export function createCellContent(rowCellData: any) {
-  console.log('createCellacontent FUnction rowCellData',rowCellData)
+  //console.log('createCellacontent FUnction rowCellData',rowCellData)
   if (!rowCellData) {
     return <span>N/A</span>;
   }

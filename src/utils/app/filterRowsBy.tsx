@@ -2,7 +2,10 @@ import { ReactSelectProps } from '../../components/Select/Dropdown/Dropdown.d';
 import { TRProps } from '../../components/Table/table';
 
 
-export function filterRowsBy(select: ReactSelectProps, CellIndex: number, resData: TRProps[]) {
+export function filterRowsBy(
+  select: ReactSelectProps,
+  CellIndex: number,
+  resData: TRProps[]) {
 
 
   return select?.value !== 'all'
@@ -12,5 +15,14 @@ export function filterRowsBy(select: ReactSelectProps, CellIndex: number, resDat
         || Label.label === select?.value;
     })
     : resData;
-}
-;
+};
+
+
+export function disabledRowsBy(
+  select: ReactSelectProps,
+  CellIndex: number,
+  resData: TRProps[]) {
+
+
+  return resData
+};

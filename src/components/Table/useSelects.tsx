@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { TRProps } from './table';
 
-export function useSelects(rows: Array<any>) {
+export function useSelects(rows: TRProps[]) {
+
   const [rowCollapse, setRowCollapse] = useState<boolean>(false);
 
   const [selectedForRemove, setSelectedForRemove] = useState<readonly string[]>([]);

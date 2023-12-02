@@ -37,6 +37,11 @@ p {
   color: white;
 }
 
+.App-header:nth-child(2) {
+  padding-block-start: 0;
+  font-family: monospace;
+}
+
 .App-body {
   min-height: 85vh;
   background-color: #282c34;

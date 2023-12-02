@@ -10,7 +10,7 @@ export const CheckBoxSelectAll = ({
   selectedRowAmount,
   oriRowAmount
 }: TableSelectProps) => {
-  console.log(selectedRowAmount, oriRowAmount, (oriRowAmount > 0) && selectedRowAmount === oriRowAmount)
+  //console.log(selectedRowAmount, oriRowAmount, (oriRowAmount > 0) && selectedRowAmount === oriRowAmount)
   return <TableCell padding="checkbox"
     key='utils-tablehead-selectAll'>
     <ThemeProvider theme={CheckboxTheme}>

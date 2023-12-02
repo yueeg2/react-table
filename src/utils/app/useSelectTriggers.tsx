@@ -1,20 +1,30 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import Button from '../../components/Button';
 import { SelectedProps } from '../../components/Select/Dropdown/Dropdown.d';
 import { disabledRow, getIds } from '../../components/Select/Dropdown/getIds';
 import { TRProps } from '@/components/Table/table';
 
-export const useSelectTriggers = ([TRs, setTbody]: [TRs: TRProps[], setTbody: any]) => {
+export const useSelectTriggers = ([TRs, setTbody, disabledTB, setDisabledTB]: [
+  TRs: TRProps[], setTbody: Dispatch<SetStateAction<TRProps[]>>,
+  disabledTB: TRProps[], setDisabledTB: Dispatch<SetStateAction<TRProps[]>>,
 
-  const onAction = React.useCallback((Set: any, [selected, setSelected]: SelectedProps, status: 'warning' | 'critical') => (e: React.MouseEvent<HTMLButtonElement>) => {
-    const readyDeleteIDs = getIds(Set, selected).filter((v: string) => v !== 'disabled');
-    alert(`ready to delete(rowID): ${readyDeleteIDs} ${selected}`);
+]) => {
 
-    setSelected(() => readyDeleteIDs)
-    setTbody(disabledRow(TRs, selected, status));
-    setSelected([]);
+  const onAction = React.useCallback((
+    Set: any,
+    [selected, setSelected]: SelectedProps,
+    status: 'warning' | 'critical') => (e: React.MouseEvent<HTMLButtonElement>) => {
 
-  }, [TRs]);
+      const readyIDs = getIds(Set, selected).filter((v: string) => v !== 'disabled');
+      //alert(`ready to action(rowID): ${readyIDs}`);
+
+      setSelected(() => readyIDs)
+      setTbody(() => disabledRow(TRs, selected, status));
+      setDisabledTB(disabledRow(disabledTB, selected, status));
+
+      setSelected([]);
+
+    }, [TRs]);
 
   return [
     {
@@ -35,3 +45,4 @@ export const useSelectTriggers = ([TRs, setTbody]: [TRs: TRProps[], setTbody: an
     },
   ];
 }
+

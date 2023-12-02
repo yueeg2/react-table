@@ -15,12 +15,13 @@ import { Options } from './utils/app/Options';
 import { filterRowsBy } from './utils/app/filterRowsBy';
 import Badge from './components/Badge';
 
-let init = true;
+let init = false
 function App() {
 
   const methods = useForm<any>({});
 
   const [tbody, setTbody] = React.useState<TRProps[]>(MockTbody(methods));
+  const [disabledTB, setDisabledTB] = React.useState<TRProps[]>(MockTbody(methods));
 
   const [previewForm, setPreviewForm] = React.useState('');
 
@@ -39,34 +40,32 @@ function App() {
   const arrayByQuery = React.useCallback(async () => {
     const { Text, Chip } = methods.watch();
 
-    return filterRowsBy(Chip, 1, filterRowsBy(Text, 0, tbody));
+    return filterRowsBy(Chip, 1, filterRowsBy(Text, 0, disabledTB));
 
+  }, [disabledTB]);
 
-  }, []);
-
-  /** listen Select Filter changing */
+  /** listen Select Filter Changing */
   React.useEffect(() => {
-    if (init) {
-      console.log("React.useEffect listen Select Filter changing");
-      console.log("formState errors:", methods.formState.errors);
 
-
-      init = false
+    if (!init) {
+      init = true
+      return
     }
+
     arrayByQuery().then((data: TRProps[]) => {
-      setTbody(data)
+      setTbody(data);
     });
 
   }, [methods.watch().Text?.value, methods.watch().Chip?.value]);
 
 
   const onSubmit = (data: any) => {
-    console.log('submitted')
+
     setPreviewForm(JSON.stringify(data, null, 4))
     setInvisible(false)
   };
 
-  const SelectTriggers = useSelectTriggers([tbody, setTbody]);
+  const SelectTriggers = useSelectTriggers([tbody, setTbody, disabledTB, setDisabledTB])
 
   return (
     <div className="App">
@@ -74,23 +73,30 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
 
-      <div className="App-header"><Badge {...{ invisible }}>
-        {previewForm !== "" && <details onClick={() => setInvisible(true)}>
-          <summary style={{ fontSize: '1rem' }}>Details</summary>
-          <pre className="flex justify-center">
-            <code style={{ textAlign: "justify", fontSize: '0.75rem' }} className="flex text-justify text-xs">
-              {previewForm}
-            </code>
-          </pre>
-        </details>}
-      </Badge>
+      <div className="App-header">
+        <Badge {...{ invisible }} className="grid grid-col-2">
+          {<details>
+            <summary style={{ fontSize: '1rem', paddingInlineEnd: 20 }}>Features</summary>
+            <pre className="flex justify-center">
+              <code style={{ textAlign: "justify", fontSize: '0.75rem' }} className="flex text-justify text-xs">
+                {JSON.stringify(table, null, 4)}</code>
+            </pre>
+          </details>}
+          {previewForm !== "" && <details onClick={() => setInvisible(true)}>
+            <summary style={{ fontSize: '1rem' }}>Details</summary>
+            <pre className="flex justify-center">
+              <code style={{ textAlign: "justify", fontSize: '0.75rem' }} className="flex text-justify text-xs">
+                {previewForm}
+              </code>
+            </pre>
+          </details>}
+        </Badge>
       </div>
 
 
       <div className="App-body flex justify-center">
 
         <Paper sx={{ minHeight: "80vh", width: "90%", borderRadius: 2 }}>
-
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
               <Button text="SAVE"
@@ -146,6 +152,9 @@ function App() {
         </Paper>
       </div>
 
+      <footer className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+      </footer>
     </div>
   );
 }

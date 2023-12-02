@@ -46,7 +46,6 @@ const Table = ({
   bgcolor,
   overflow,
   children }: StyledTableProps) => {
-  //const theme = useTheme();
 
   /** paging */
   const [startIndex, endIndex, TablePagination] = usePaging();
@@ -156,13 +155,17 @@ const Table = ({
   React.useEffect(() => {
     if (!onSelect) return;
     onSelect(selectedForRemove);
+
   }, [selectedForRemove, onSelect]);
 
   /** handle collapsible inner table */
   const [innerTable, setInnerTable] = React.useState(collapsible);
 
-  /** change row side effect */
+  /** change collapsible row side effect */
   React.useEffect(() => {
+
+    setSelectedForRemove(() => []);
+
     if (!collapsible) return;
 
     const updatedInnerTable = visibleRows.map(row => {
@@ -175,12 +178,6 @@ const Table = ({
 
   /** toggle all collapse */
   const { switchValue, handleSwitchChange } = useSwitch(false);
-
-  /** side effect */
-  React.useEffect(() => {
-    setSelectedForRemove(() => []);
-  }, [tbody.length]);
-
 
   const isRowsIncludeSelected = (v: TRProps) => selectedForRemove.includes(v?.cells[0].rowID.toString());
 
@@ -217,7 +214,7 @@ const Table = ({
               selectedRowsId={selectedRowsId}
               handleSelect={handleSelectRowClick} />
             : innerTable
-              ? <Collapsible //TODO
+              ? <Collapsible 
                 style={{ backgroundColor: bgcolor }}
                 TH={thead}
                 TR={TR[0].cells || TR[0].disabled}
