@@ -4,16 +4,16 @@ import { Paper } from '@mui/material';
 import logo from './logo.svg';
 import './App.css';
 import './css/globals.css';
-import { createTH } from './components/Table/utils/mock';
 import Table from './components/Table';
 import Button from './components/Button';
 import { useSelectTriggers } from './utils/app/useSelectTriggers';
 import { MockTbody } from './utils/app/MockTbody';
-import { TRProps } from './components/Table/table';
 import Select from './components/Select/Dropdown';
 import { Options } from './utils/app/Options';
 import { filterRowsBy } from './utils/app/filterRowsBy';
 import Badge from './components/Badge';
+import { TRProps } from './utils/table.d';
+import { createTH } from './utils/table';
 
 let init = false
 function App() {
@@ -27,10 +27,10 @@ function App() {
 
   const [invisible, setInvisible] = React.useState(true);
 
-  const [table, setTable] = React.useState({
+  const [table] = React.useState({
     tabbable: false,
     sortable: false,
-    collapsible: false,
+    collapsible: undefined,
     pageable: true,
     searchable: true,
     selectable: true,
@@ -106,9 +106,10 @@ function App() {
                 style={{
                   backgroundColor: "var(--blue-pacific)",
                   display: "flex",
-                  justifyContent: "center", borderRadius: "8px 8px 0 0"
+                  justifyContent: "center",
+                  borderRadius: "8px 8px 0 0"
                 }} />
-              {React.useMemo(() => <Table rows={[]} headCells={[]} initOrder={''} {...{
+              {React.useMemo(() => <Table {...{
                 ...table,
                 selectActions: SelectTriggers,
                 thead: createTH(["Text", "Chip", "Icon", "Input", "Select"], "center", []),

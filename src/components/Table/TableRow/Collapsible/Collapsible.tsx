@@ -8,25 +8,27 @@ import {
 } from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { TRProps, TableRowProps } from "@/components/Table/table.d";
-import TableRowTheme from "../TableRowTheme";
-import { HeadCellProps } from '@/components/Table/table.d';
-import Cell from '../../TableCell';
-import TableHead from '../../TableHead';
+import TableHead from "../../TableHead";
+import Cell from "../../TableCell";
+import { THCellProps, TRProps, CreateTRProps } from 'src/utils/table.d';
+import { TRTheme } from 'src/styles/mui';
 
-interface TableRowCollapseProps extends TableRowProps {
-  innerTable: { TH: HeadCellProps[], TR: TRProps[] },
+interface TRCollapseProps extends CreateTRProps {
+  innerTable: {
+    TH: THCellProps[],
+    TR: TRProps[]
+  },
   index: number,
   allCollapse: boolean,
 }
 
-const Collapsible = ({
+const Collapsible: React.FunctionComponent<TRCollapseProps> = ({
   TH,
   TR,
   style,
   innerTable,
   allCollapse
-}: TableRowCollapseProps) => {
+}) => {
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -34,33 +36,35 @@ const Collapsible = ({
   }, [allCollapse])
 
   return (
-    <ThemeProvider theme={TableRowTheme(style)}>
-      <MuiTableRow>
-        <ThemeProvider theme={TableRowTheme(style)}>
+    <ThemeProvider theme={TRTheme(style)}>
+      {/** layer 1 */}
+      <MuiTableRow >
+        <ThemeProvider theme={TRTheme(style)}>
           <TableCell>
             <IconButton size="small" onClick={() => setOpen(!open)}>
               <KeyboardArrowDownIcon />
             </IconButton>
           </TableCell>
         </ThemeProvider>
-        {TH.length ? TH?.map((headCell, i) => <Cell
-          id={headCell.id}
-          TRCell={TR[i]} />) : null}
+        {TH.length ? TH?.map((cell, i) => <Cell
+          key={`collapsible-tr-cell-${i}`}
+          id={`collapsible-tr-cell-${cell.id}`}>{TR[i].label}</Cell>) : null}
       </MuiTableRow>
+      {/** layer 2 */}
       <MuiTableRow >
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={TH.length + 1}>
-          <MuiCollapse in={open} timeout="auto" unmountOnExit style={{ paddingBottom: '10px' }}>
+          <MuiCollapse in={open} style={{ paddingBottom: '10px' }} timeout="auto" unmountOnExit>
             {
               innerTable
                 ? <Table>
                   <TableHead TH={innerTable.TH} />
                   {innerTable.TR.map((TR: TRProps, i) =>
-                    <MuiTableRow key={`innerTableRow-${i}`}>
+                    <MuiTableRow key={`inner-tr-${i}`}>
                       {
                         innerTable.TH.length
-                          ? innerTable.TH.map((headCell, i: number) => <Cell
-                            id={headCell.id}
-                            TRCell={TR.cells[i]} />)
+                          ? innerTable.TH.map((innerCell, i: number) => <Cell
+                            key={`inner-tr-cell-${innerCell.id}`}
+                            id={`inner-tr-cell-${innerCell.id}`}>{TR.cells[i].label}</Cell>)
                           : null
                       }
                     </MuiTableRow>)}

@@ -1,8 +1,6 @@
 "use client"
 import Typography from "@mui/material/Typography";
 import Skeleton from '@mui/material/Skeleton';
-import { TRProps } from "../Table/table.d";
-import { createTR } from "../Table/utils/mock";
 
 export function Contacts(): unknown[] {
   return Array.apply({

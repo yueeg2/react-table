@@ -2,13 +2,13 @@ import React, { Dispatch, SetStateAction } from 'react';
 import Button from '../../components/Button';
 import { SelectedProps } from '../../components/Select/Dropdown/Dropdown.d';
 import { disabledRow, getIds } from '../../components/Select/Dropdown/getIds';
-import { TRProps } from '@/components/Table/table';
+import { SelectAction, TRProps } from '../table.d';
 
-export const useSelectTriggers = ([TRs, setTbody, disabledTB, setDisabledTB]: [
-  TRs: TRProps[], setTbody: Dispatch<SetStateAction<TRProps[]>>,
-  disabledTB: TRProps[], setDisabledTB: Dispatch<SetStateAction<TRProps[]>>,
-
-]) => {
+export const useSelectTriggers = (
+  [TRs, setTbody, disabledTB, setDisabledTB]: [
+    TRs: TRProps[], setTbody: Dispatch<SetStateAction<TRProps[]>>,
+    disabledTB: TRProps[], setDisabledTB: Dispatch<SetStateAction<TRProps[]>>,
+  ]):SelectAction[] => {
 
   const onAction = React.useCallback((
     Set: any,
@@ -29,7 +29,6 @@ export const useSelectTriggers = ([TRs, setTbody, disabledTB, setDisabledTB]: [
   return [
     {
       status: "warning",
-      statusIndex: 1,
       action: onAction,
       ActionElement: ({ onClick }: any) => <Button
         text="Disable Warning" buttonColor="rgb(255, 173, 0)"
@@ -37,7 +36,6 @@ export const useSelectTriggers = ([TRs, setTbody, disabledTB, setDisabledTB]: [
     },
     {
       status: "critical",
-      statusIndex: 1,
       action: onAction,
       ActionElement: ({ onClick }: any) => <Button
         text="Disable Critical" buttonColor="var(--engineRed)"

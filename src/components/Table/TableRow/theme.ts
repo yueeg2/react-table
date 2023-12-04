@@ -1,5 +1,5 @@
 import { TableCellProps, createTheme } from '@mui/material';
-import { CustomTableRowStyle } from '../../table.d';
+import { CustomTableRowStyle } from './TableRow';
 
 
 export const StyledTableCellProps = (index: number): TableCellProps => ({

@@ -5,28 +5,26 @@ import {
   TableRow as MuiTableRow,
   ThemeProvider
 } from "@mui/material";
-import TableRowTheme from "../TableRowTheme";
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import SquareIcon from '@mui/icons-material/Square';
 import Cell from "../../TableCell";
-import { TableRowProps } from "../../table.d";
-import { CheckboxTheme } from "../../../../styles";
+import { CreateTRProps } from "../../../../utils/table.d";
+import { CheckboxTheme, TRTheme } from "../../../../styles/mui";
 
-
-interface TableRowSelectableProps extends TableRowProps {
+interface TRSelectableProps extends CreateTRProps {
   handleSelect: (id: string) => (e: any) => void,
   selectedRowsId: (id: string) => boolean,
   index: string,
   disabled?: boolean
 }
 
-const Selectable = ({
+const Selectable: React.FunctionComponent<TRSelectableProps> = ({
   TH,
   TR,
   style,
   disabled = false,
   handleSelect,
-  selectedRowsId, }: TableRowSelectableProps) => {
+  selectedRowsId, }) => {
 
   const selectTRId = TR[0].rowID.toString();
   // console.log("sdfsdfsd", selectTRId)
@@ -34,7 +32,7 @@ const Selectable = ({
 
   //console.log('Selectable', selectTRId, TR)
 
-  return <ThemeProvider theme={TableRowTheme(style)}>
+  return <ThemeProvider theme={TRTheme(style)}>
     <MuiTableRow onClick={handleSelect(selectTRId)}
       hover role="checkbox"
       tabIndex={-1}
@@ -61,9 +59,9 @@ const Selectable = ({
           />
         </ThemeProvider>
       </TableCell>
-      {TH?.map((headCell, i) => <Cell
-        id={headCell.id}
-        TRCell={TR[i]} />)}
+      {TH?.map((cell, i) => <Cell
+        key={`selectable-tr-cell-${i}`}
+        id={`selectable-tr-cell-${cell.id}`}>{TR[i].label}</Cell>)}
     </MuiTableRow>
   </ThemeProvider>
 }

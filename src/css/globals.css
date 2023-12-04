@@ -144,19 +144,7 @@ padding: 10px 30px;
 #LicenseContract .bold {
   font-weight: bold;
 }
-.customDatePickerWidth,
-.customDatePickerWidth .MuiInputBase-root,
-.customDatePickerWidth>div.react-datepicker-wrapper,
-.customDatePickerWidth>div>div.react-datepicker__input-container .customDatePickerWidth>div>div.react-datepicker__input-container input {
-  width: 100%;
-}
 
-.customDatePickerWidth,
-.customDatePickerWidth .MuiInputBase-root,
-.customDatePickerWidth>div.react-datepicker-wrapper,
-.customDatePickerWidth>div>div.react-datepicker__input-container .customDatePickerWidth>div>div.react-datepicker__input-container input {
-  width: 100%;
-}
 
 .react-select-clearIndicator {
   position: absolute;
@@ -203,9 +191,6 @@ body {
   pointer-events: none;
 }
 
-.customDatePickerWrapperWidth .react-datepicker-wrapper {
-  width: 100%;
-}
 
 .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
   top: -10px;

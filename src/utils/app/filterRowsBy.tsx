@@ -1,5 +1,5 @@
 import { ReactSelectProps } from '../../components/Select/Dropdown/Dropdown.d';
-import { TRProps } from '../../components/Table/table';
+import { TRProps } from '../table.d';
 
 
 export function filterRowsBy(

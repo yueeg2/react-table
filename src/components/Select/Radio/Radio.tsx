@@ -3,7 +3,7 @@ import { Radio as MuiRadio } from '@mui/material';
 import RadioGroup, { RadioGroupProps } from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { ReactSelectOptProps } from '../Dropdown/Dropdown.d';
-import '@/css/App.css'
+import 'css/App.css'
 import { ControllerRenderProps } from 'react-hook-form';
 import { type SelectName } from '../select.d';
 

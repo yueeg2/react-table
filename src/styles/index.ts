@@ -1,21 +1,16 @@
-import { createTheme } from "@mui/material";
 
-export const CheckboxTheme = createTheme({
-  components: {
-    // Name of the component
-    MuiCheckbox: {
-      styleOverrides: {
-        root: ({ ownerState }) => ({
-          ...(!ownerState.disabled ? {
-            color: ownerState.checked ? 'var(--steelBlue) !important':  '#aaaaaa',
-          }: {
-            color: '#aaaaaa',
-          }),
-        }),
-      },
-    },
+export const StyledSX = (isBlue: boolean) => ({
+  Paper: {
+    minHeight: 232,
+    width: '100%',
+    backgroundColor: isBlue ? 'var(--blueTheme)' : '#fff',
+    boxShadow: 'none',
+    overflowX: 'hidden'
   },
+  Topbar: { display: 'flex', justifyContent: 'space-between' },
+  Footer: {}
 });
+
 export const skeleton_text = (isLoaded: boolean) => !isLoaded ? ({
   width: '60%',
   height: '1.2rem',

@@ -1,7 +1,4 @@
 import { useState } from "react";
-import { getComparator, stableSort } from "./Table.utils";
-
-
 
 export function useFilter({rows}: any): Array<any> {
   const [filterFn, setFilterFn] = useState({ fn: (items: any) => { return items; } });

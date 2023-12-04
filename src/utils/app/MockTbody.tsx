@@ -1,12 +1,12 @@
 import React from 'react';
-import { createTR } from '../../components/Table/utils/mock';
 import Chip from '../../components/Chip';
 import Input from '../../components/Input';
 import Select from '../../components/Select/Dropdown';
 import { Control, Controller, FieldValues } from 'react-hook-form';
 import { colourOptions, flavourOptions } from '../../components/Select/docs/data';
 import Skeleton from '../../components/Skeleton';
-import { type TRProps } from '@/components/Table/table';
+import { createTR } from '../table';
+import { TRProps } from '../table.d';
 
 export const MockTbody = (
   methods: {

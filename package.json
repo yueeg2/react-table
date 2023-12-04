@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@chakra-ui/layout": "^2.3.1",
+    "@craco/craco": "^7.1.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.16",
@@ -16,6 +17,7 @@
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "react": "^18.2.0",
+    "react-app-alias": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
     "react-scripts": "5.0.1",
@@ -24,9 +26,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

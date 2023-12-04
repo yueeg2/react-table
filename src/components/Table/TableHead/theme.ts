@@ -1,6 +1,6 @@
 import { CSSObject, Theme, createTheme } from '@mui/material';
 
-export function StyledTableHeadTheme(style?: undefined | CSSObject): Theme {
+export function StyledTHTheme(style?: undefined | CSSObject): Theme {
   if (!style) {
     return createTheme({})
   }

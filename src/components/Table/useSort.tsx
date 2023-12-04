@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { Order } from './table.d';
 
-export function useSort(initOrder: string): Array<any> {
-  const [orderBy, setOrderBy] = useState<string>(initOrder);
-  const [order, setOrder] = useState<Order>('desc');
+export function useSort(initOrder?: string) {
+  const [orderBy, setOrderBy] = useState<string>(initOrder || '');
+  const [order, setOrder] = useState<'asc' | 'desc'>('desc');
 
 
   const handleRequestSort = (
@@ -15,5 +14,5 @@ export function useSort(initOrder: string): Array<any> {
     setOrderBy(property);
   };
 
-  return [orderBy, order, handleRequestSort];
+  return { orderBy, order, handleRequestSort };
 }

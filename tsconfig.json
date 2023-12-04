@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "#/*": ["public/*"]
+    },
     "target": "es5",
     "lib": [
       "dom",
@@ -18,14 +23,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "paths": {
-      "@/*": ["./src/*"],
-      "#/*": ["./public/*"],
-    }
-  },
-  "include": [
-    "src"
-  ],
-  
+    "jsx": "react-jsx"
+  }
 }

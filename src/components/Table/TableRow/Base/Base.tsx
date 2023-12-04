@@ -3,11 +3,11 @@ import {
   TableRow as MuiTableRow,
   ThemeProvider,
 } from "@mui/material";
-import TableRowTheme from "../TableRowTheme";
-import { TableRowProps } from "@/components/Table/table.d";
-import Cell from "../../TableCell";
+import Cell from "src/components/Table/TableCell";
+import { TRTheme } from "src/styles/mui";
+import { CreateTRProps } from "src/utils/table.d";
 
-const Base: React.FunctionComponent<TableRowProps> = (
+const Base: React.FunctionComponent<CreateTRProps> = (
   {
     TH,
     TR,
@@ -17,15 +17,13 @@ const Base: React.FunctionComponent<TableRowProps> = (
 ) => {
 
   const Cells = Object?.values(TR) ?? [];
-  
-  return <ThemeProvider theme={TableRowTheme(style)}>
-    <MuiTableRow hover role="checkbox" id={`BaseRow-${id}`}
-      tabIndex={-1}>
+
+  return <ThemeProvider theme={TRTheme(style)}>
+    <MuiTableRow hover role="checkbox"  tabIndex={-1}>
       {
-        TH?.map((THcell, i) => <Cell key={`Cell-${THcell.id || id}`}
-          id={`Cell-${THcell.id || id}`}
-          TRCell={Cells[i] ? Cells[i] : { label: '' }}
-        />)
+        TH?.map((THcell, i) => <Cell
+          key={`base-tr-cell-${i}`}
+          id={`base-tr-cell-${THcell.id || id}`}>{Cells[i]?.label}</Cell>)
       }
     </MuiTableRow>
   </ThemeProvider>

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import TablePagination from '@mui/material/TablePagination';
 
-export function usePaging(): [number, number, ({ rowCount }: { rowCount: number }) => JSX.Element] {
-  const [rowsPerPage, setRowsPerPage] = useState<number>(5);
+export function usePaging<T>(): [number, number, ({ rowCount }: { rowCount: number }) => JSX.Element] {
+  const [rowsPerPage, setRowsPerPage] = useState<number>(10);
   const [pageNum, setPageNum] = useState<number>(0);
 
   const handleChangePage = (event: unknown, newPage: number) => {

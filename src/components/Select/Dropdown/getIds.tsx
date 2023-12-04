@@ -1,4 +1,4 @@
-import { TRProps } from "@/components/Table/table.d";
+import { TRProps } from "src/utils/table.d";
 
 export function getIds(Set: any, selected: any) {
     let selectedRowIDs: string[] = [];

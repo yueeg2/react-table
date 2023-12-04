@@ -1,4 +1,4 @@
-import { HeadCellProps, Order } from '../../table';
+import { HeadCellProps, Order } from '../../table.d';
 import { CSSObject} from '@mui/material';
 
 export type CustomTableHeadStyle = {

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import { visuallyHidden } from '@mui/utils';
 
-import { Columns, Selectable, Sortable } from './TableHead';
+import { Columns, Sortable } from './TableHead';
 
 
 /**
@@ -52,9 +52,7 @@ export function SortingDisplayHandler(th: Columns, sort?: Sortable) {
 
   return function (label: string) {
     return sort
-      ? <TableSortLabel
-        {...sortProps(th)}
-      >
+      ? <TableSortLabel {...sortProps(th)}>
         {label}
         {showCurrentOrder(sort)}
       </TableSortLabel>

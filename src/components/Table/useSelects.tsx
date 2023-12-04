@@ -1,8 +1,6 @@
-import { useState } from 'react';
-import { TRProps } from './table';
+import { Key, useState } from 'react';
 
-export function useSelects(rows: TRProps[]) {
-
+export function useSelects(rows: Array<any>) {
   const [rowCollapse, setRowCollapse] = useState<boolean>(false);
 
   const [selectedForRemove, setSelectedForRemove] = useState<readonly string[]>([]);
@@ -38,7 +36,7 @@ export function useSelects(rows: TRProps[]) {
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newSelecteds = rows.length < 1
       ? ['null']
-      : rows.map((row: { [key in string | number | symbol]: object }, i) => {
+      : rows.map((row: { [key:string]: object }) => {
         return row?.cells ? `${Object.values(row?.cells)[0].rowID}` : 'disabled'
       })
 
